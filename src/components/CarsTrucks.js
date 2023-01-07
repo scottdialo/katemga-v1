@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 import Card from "./Card";
-
 
 function CarsTrucks() {
   const [carPostListings, setCarPostListings] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/cars/")
+    Axios.get("/cars")
       .then((res) => {
         setCarPostListings(res.data);
       })
@@ -19,19 +18,11 @@ function CarsTrucks() {
     console.log("Effect Called ");
   }, []);
 
-
   return (
     <>
-    <div className="car-page">
-      <Card 
-      data={carPostListings} 
-      pageName="cars-trucks"
-      />
-    </div>
-
-   
-
-    
+      <div className="car-page">
+        <Card data={carPostListings} pageName="cars-trucks" />
+      </div>
     </>
   );
 }

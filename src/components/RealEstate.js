@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "react-spinner-animated/dist/index.css";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 
 function RealEstate(isAuth) {
   const [realEstatePostsLists, setRealEstatePostsLists] = useState([]);
   // const [loadingData, setLoading] = useState(true);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/real-estate/")
+    Axios.get("/real-estate")
       .then((res) => {
         setRealEstatePostsLists(res.data);
       })

@@ -1,14 +1,14 @@
 import { useState } from "react";
-// import app from "../firebase-config";
+import app from "../firebase-config";
 
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytesResumable,
-//   getDownloadURL,
-// } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL,
+} from "firebase/storage";
 import { useNavigate } from "react-router-dom";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 
 //mongoDb setup
 const CreateRealEstatePost = () => {
@@ -25,18 +25,18 @@ const CreateRealEstatePost = () => {
 
   // testing multiple image upload
 
-  // const [pictures, setPictures] = useState([]);
+  const [pictures, setPictures] = useState([]);
 
-  // const handleImageUpload = (event) => {
-  //   let images = [];
+  const handleImageUpload = (event) => {
+    let images = [];
 
-  //   for (const pictures of event.target.files) {
-  //     images.push(pictures);
-  //   }
+    for (const pictures of event.target.files) {
+      images.push(pictures);
+    }
 
-  //   setPictures(images);
-  //   //console.log(images);
-  // };
+    setPictures(images);
+    //console.log(images);
+  };
   // console.log(pictures);
 
   // testing multiple image upload ends here
@@ -54,68 +54,56 @@ const CreateRealEstatePost = () => {
   const addRealEstateListing = (e) => {
     e.preventDefault();
 
-    const template = {
-      title: realEstateData.title,
-      location: realEstateData.location,
-      price: realEstateData.price,
-      description: realEstateData.description,
-    };
+    const fileName = new Date().getTime() + toString(pictures.name);
+    const storage = getStorage(app);
+    const storageRef = ref(storage, fileName);
+    const uploadTask = uploadBytesResumable(storageRef, pictures);
+    // console.log(JSON.stringify(fileName));
 
-    console.log(template);
-    Axios.post("http://localhost:3001/real-estate/create", template).then(
-      (response) => console.log(response)
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        // Observe state change events such as progress, pause, and resume
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("Upload is " + progress + "% done");
+        switch (snapshot.state) {
+          case "paused":
+            // console.log("Upload is paused");
+            break;
+          case "running":
+            // console.log("Upload is running");
+            break;
+          default:
+        }
+      },
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log(error);
+      },
+      () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          const template = {
+            title: realEstateData.title,
+            location: realEstateData.location,
+            price: realEstateData.price,
+            description: realEstateData.description,
+            pictureUrl: downloadURL,
+          };
+
+          console.log(template);
+          Axios.post("/real-estate/create", template).then((response) =>
+            console.log(response)
+          );
+          console.log(JSON.stringify(template.pictureUrl));
+
+          console.log("image url is at " + downloadURL);
+        });
+      }
     );
-
-    //   const fileName = new Date().getTime() + toString(pictures.name);
-    //   const storage = getStorage(app);
-    //   const storageRef = ref(storage, fileName);
-    //   const uploadTask = uploadBytesResumable(storageRef, pictures);
-    //   console.log(JSON.stringify(fileName));
-
-    //   uploadTask.on(
-    //     "state_changed",
-    //     (snapshot) => {
-    //       // Observe state change events such as progress, pause, and resume
-    //       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-    //       const progress =
-    //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //       console.log("Upload is " + progress + "% done");
-    //       switch (snapshot.state) {
-    //         case "paused":
-    //           console.log("Upload is paused");
-    //           break;
-    //         case "running":
-    //           console.log("Upload is running");
-    //           break;
-    //         default:
-    //       }
-    //     },
-    //     (error) => {
-    //       // Handle unsuccessful uploads
-    //       console.log(error);
-    //     },
-    //     () => {
-    //       // Handle successful uploads on complete
-    //       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-    //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-    //         const template = {
-    //           title: realEstateData.title,
-    //           location: realEstateData.location,
-    //           price: realEstateData.price,
-    //           description: realEstateData.description,
-    //           pictureUrl: downloadURL,
-    //         };
-
-    //         console.log(template);
-    //         Axios.post("http://localhost:3001/real-estate/create", template).then(
-    //           (response) => console.log(response)
-    //         );
-    //         console.log(JSON.stringify(template.pictureUrl));
-
-    //         console.log("image url is at " + downloadURL);
-    //       });
-    //     }
-    //   );
 
     navigate("/real-estate");
   };
@@ -158,13 +146,13 @@ const CreateRealEstatePost = () => {
 
         <div>
           <label>upload multiple images</label>
-          {/* <input
+          <input
             name="pictureUrl"
             type="file"
             multiple
             onChange={handleImageUpload}
             accept="image/*"
-          /> */}
+          />
         </div>
 
         <div className="inputGp">

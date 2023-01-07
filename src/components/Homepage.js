@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 
 function Homepage() {
   const [realEstatePostsLists, setRealEstatePostsLists] = useState([]);
@@ -9,7 +9,7 @@ function Homepage() {
 
   //display all posts in the homepage
   useEffect(() => {
-    Axios.get("http://localhost:3001/real-estate/")
+    Axios.get("/real-estate")
       .then((res) => {
         setRealEstatePostsLists(res.data);
       })
@@ -22,7 +22,7 @@ function Homepage() {
 
   //cars listing
   useEffect(() => {
-    Axios.get("http://localhost:3001/cars/")
+    Axios.get("/cars")
       .then((res) => {
         setCarPostListings(res.data);
       })
@@ -35,7 +35,7 @@ function Homepage() {
 
   //electronic listing
   useEffect(() => {
-    Axios.get("http://localhost:3001/electronic/")
+    Axios.get("/electronic")
       .then((res) => {
         setElectronicListings(res.data);
       })

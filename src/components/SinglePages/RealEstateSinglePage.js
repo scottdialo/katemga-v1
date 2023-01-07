@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Axios from "axios";
+import Axios from "../../axiosBaseUrl";
 import { useParams } from "react-router-dom";
 import CardSinglePage from "./CardSinglePage";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const RealEstatePage = () => {
   const [itemData, setItemData] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/real-estate/" + postName)
+    Axios.get("/real-estate/" + postName)
       .then((res) => {
         setItemData(res.data);
       })

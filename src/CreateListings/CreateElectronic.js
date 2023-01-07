@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 import { useNavigate } from "react-router-dom";
 
 const CreateElectronic = () => {
@@ -36,7 +36,7 @@ const CreateElectronic = () => {
       description: electronicData.description,
     };
 
-    Axios.post("http://localhost:3001/electronic/create", template);
+    Axios.post("/electronic/create", template);
     console.log(template);
 
     navigate("/electronics");

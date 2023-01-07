@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Axios from "../axiosBaseUrl";
 
 const CreateCars = () => {
   const [carListingData, setCarListingData] = useState({
@@ -42,7 +42,7 @@ const CreateCars = () => {
       description: carListingData.description,
       photo1: carListingData.photo1,
     };
-    Axios.post("http://localhost:3001/cars/create", template);
+    Axios.post("/cars/create", template);
 
     console.log(template);
     console.log("new listing added to DB");

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import "react-spinner-animated/dist/index.css";
-import Axios from "axios";
+import Axios from "../axiosBaseUrl";
 
 function Electronics() {
   const [electronicPostLists, setElectronicPostLists] = useState([]);
 
   useEffect(() => {
-    Axios.get("http://localhost:3001/electronic/")
+    Axios.get("/electronic")
       .then((res) => {
         setElectronicPostLists(res.data);
       })

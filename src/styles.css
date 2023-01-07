@@ -1,0 +1,339 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: "Epilogue", sans-serif;
+}
+
+/* styling for card */
+.card-img-top {
+  height: 200px;
+}
+
+/* single product page styling */
+.mx-auto {
+  min-height: 85vh;
+}
+
+.nav-link {
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+.logo > h3 {
+  color: green;
+}
+
+.nav-link:hover {
+  color: green !important;
+}
+
+/* contact form styling start here */
+
+form {
+  width: 80%;
+  margin: 0 auto;
+}
+.post-header {
+  text-align: center;
+}
+
+.btn-group {
+  width: 100%;
+}
+
+.btn {
+  margin: 0 auto;
+  display: flex;
+  background: green;
+  color: white;
+  border-color: white;
+}
+.btn:hover {
+  background-color: green;
+  color: white;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* styling for our contact us form */
+.contact-us {
+  margin: 0 auto;
+}
+.c-input {
+  display: block;
+  margin: 10px 0px;
+  font-size: 16px;
+  height: 50px;
+  width: 100%;
+}
+.contact-mgs {
+  margin: 10px 0;
+}
+
+.c-header,
+.c-content,
+.contact-header {
+  text-align: center;
+}
+
+/* test */
+
+form {
+  margin-top: 20px;
+}
+input {
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid black;
+  margin: 10px 0px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+textarea {
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+button {
+  padding: 15px;
+  background-color: white;
+  color: green;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+/* contact form styling ends here */
+
+/* styling for our real estate page start here*/
+.realEstate-page {
+  text-align: center;
+  margin: 80px 0;
+}
+
+/* styling for our real estate page Ends here*/
+.categoryPage,
+.realEstate-page,
+.car-page,
+.electronic,
+.my-listings,
+.homepage,
+.contact {
+  min-height: 88vh;
+  margin: 60px auto;
+}
+
+.category {
+  background: #fff;
+  width: 70%;
+  box-shadow: 2px 2px 8px #d9d9d9;
+  border-radius: 16px;
+  padding: 3rem;
+  margin: 0 auto;
+}
+/* footer styling starts*/
+footer {
+  background: transparent;
+  background-color: rgba(249, 248, 248, 0.8);
+  align-items: center;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+}
+
+footer p {
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+.footer-right > img {
+  width: 30px;
+}
+
+/* footer styling ends */
+
+/* styling for create post */
+
+.createPostPage {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.cpContainer {
+  width: 50%;
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgb(168 168 168 / 50%);
+  border-radius: 10px;
+  margin: 60px auto;
+  padding: 57px;
+}
+
+.cpContainer h1 {
+  text-align: center;
+}
+
+.cpContainer label {
+  font-size: 25px;
+}
+
+input {
+  border: 0 solid #ccc;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+input,
+textarea {
+  margin-top: 5px;
+}
+
+.loginPage {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginPage p {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+/* GOOGLE BUTTON */
+.login-with-google-btn {
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  padding: 5px 16px 12px 42px;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #757575;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMiAxMyAxMyAxMiAxMy42djIuMmgzYTguOCA4LjggMCAwIDAgMi42LTYuNnoiIGZpbGw9IiM0Mjg1RjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05IDE4YzIuNCAwIDQuNS0uOCA2LTIuMmwtMy0yLjJhNS40IDUuNCAwIDAgMS04LTIuOUgxVjEzYTkgOSAwIDAgMCA4IDV6IiBmaWxsPSIjMzRBODUzIiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNNCAxMC43YTUuNCA1LjQgMCAwIDEgMC0zLjRWNUgxYTkgOSAwIDAgMCAwIDhsMy0yLjN6IiBmaWxsPSIjRkJCQzA1IiBmaWxsLXJ1bGU9Im5vbnplcm8iLz48cGF0aCBkPSJNOSAzLjZjMS4zIDAgMi41LjQgMy40IDEuM0wxNSAyLjNBOSA5IDAgMCAwIDEgNWwzIDIuNGE1LjQgNS40IDAgMCAxIDUtMy43eiIgZmlsbD0iI0VBNDMzNSIgZmlsbC1ydWxlPSJub256ZXJvIi8+PHBhdGggZD0iTTAgMGgxOHYxOEgweiIvPjwvZz48L3N2Zz4=);
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 12px 11px;
+}
+.login-with-google-btn:hover {
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+.login-with-google-btn:active {
+  background-color: #eeeeee;
+}
+.login-with-google-btn:focus {
+  outline: none;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.25),
+    0 0 0 3px #c8dafc;
+}
+.login-with-google-btn:disabled {
+  filter: grayscale(100%);
+  background-color: #ebebeb;
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 1px 1px rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+}
+
+.homepage {
+  width: 100%;
+  padding: 7%;
+  text-align: center;
+}
+
+.homepage .post {
+  width: 600px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.post .postHeader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.postHeader .title {
+  flex: 50%;
+}
+.postHeader .deletePost {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.deletePost button {
+  border: none;
+
+  background: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.post .postTextContainer {
+  word-wrap: break-word;
+  height: auto;
+  max-height: 400px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/* styling for single listing card-body  */
+.btn-group {
+  border-radius: 0.375rem;
+  gap: 0.5rem;
+}
+
+/* styling for .category */
+.category-title {
+  color: green;
+}
+
+/* styling for listing section on single item page*/
+
+/* mobile styling */
+
+@media only screen and (max-width: 600px) {
+  .cpContainer {
+    width: 100%;
+    padding: 25px;
+  }
+  .cpContainer h1 {
+    font-weight: bold;
+  }
+  .footer {
+    padding: 0rem 0.3rem;
+  }
+  .footer-center {
+    display: none;
+  }
+  /* category styling */
+  .category > h3 {
+    font-weight: bold;
+    font-size: 1em;
+  }
+}

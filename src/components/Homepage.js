@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import Axios from "../axiosBaseUrl";
-
 function Homepage() {
   const [realEstatePostsLists, setRealEstatePostsLists] = useState([]);
   const [carPostListings, setCarPostListings] = useState([]);

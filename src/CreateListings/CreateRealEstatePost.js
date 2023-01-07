@@ -96,7 +96,7 @@ const CreateRealEstatePost = () => {
 
           console.log(template);
           Axios.post("/real-estate/create", template).then((response) =>
-            console.log(response)
+            console.log(response.data)
           );
           console.log(JSON.stringify(template.pictureUrl));
 
@@ -169,8 +169,7 @@ const CreateRealEstatePost = () => {
         <input
           type="file"
           id="file"
-          // onChange={(e) => setPictures(e.target.files[0])}
-          multiple
+          onChange={(e) => setPictures(e.target.files[0])}
         />
 
         <div className="inputGp">

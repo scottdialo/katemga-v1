@@ -24,7 +24,7 @@ const RealEstatePage = () => {
   return (
     <>
       <CardSinglePage
-        imgUrl={itemData.imgUrl}
+        pictureUrl={itemData.pictureUrl}
         title={itemData.title}
         location={itemData.location}
         price={itemData.price}

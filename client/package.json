@@ -1,5 +1,6 @@
 {
-  "name": "katemga-2.0",
+  "name": "katemga-v1",
+  "homepage": "https://yengema.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

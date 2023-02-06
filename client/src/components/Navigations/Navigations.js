@@ -27,7 +27,7 @@ function Navigation() {
 
   const signUserOut = () => {
 
-    alert("working");
+    // alert("working");
 
     signOut(auth).then(() => {
       localStorage.clear();
@@ -42,7 +42,7 @@ function Navigation() {
 
     <div>
 
-         <Navbar 
+         <Navbar
           isAuth={isAuth}
           signUserOut={signUserOut}
          />

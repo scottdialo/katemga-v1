@@ -33,6 +33,7 @@ a {
 
 .nav-link:hover {
   color: green !important;
+  border-bottom: 3px solid green;
 }
 
 /* contact form styling start here */
@@ -77,10 +78,13 @@ input[type="number"] {
 }
 .c-input {
   display: block;
-  margin: 10px 0px;
+  margin: 10px 0px 40px;
   font-size: 16px;
   height: 50px;
   width: 100%;
+}
+#form-group sup {
+  color: red;
 }
 .contact-mgs {
   margin: 10px 0;
@@ -138,6 +142,10 @@ button {
   min-height: 88vh;
   margin: 60px auto;
 }
+.contact {
+  max-width: 45rem;
+  margin: 40px auto;
+}
 
 .category {
   background: #fff;
@@ -164,6 +172,7 @@ footer p {
 }
 .footer-right > img {
   width: 30px;
+  cursor: pointer;
 }
 
 /* footer styling ends */

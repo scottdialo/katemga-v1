@@ -11,7 +11,7 @@ function RealEstate(isAuth) {
     Axios.get("/real-estate")
       .then((res) => {
         setRealEstatePostsLists(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

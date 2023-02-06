@@ -9,18 +9,17 @@ function ContactUs() {
         action="https://formsubmit.co/91a648979bd7c79f68a38baba2337c4d"
         method="POST"
         id="contact-form"
-        class="contact-us"
+        className="contact-us"
       >
         {/* Honeypot */}
         <input type="text" name="_honey" style={{ display: "none" }} />
         {/* Disable captcha  */}
         <input type="hidden" name="_captcha" value="false" />
-        <input
-          type="hidden"
-          name="_next"
-          value="http://katenga-env.eba-i9t2gmux.us-west-1.elasticbeanstalk.com/"
-        />
+        <input type="hidden" name="_next" value="https://yengema.com/" />
         <div id="form-group">
+          <label htmlFor="name">
+            Name <sup>*</sup>
+          </label>
           <input
             id="from_name"
             name="user_name"
@@ -30,6 +29,9 @@ function ContactUs() {
             required
             autoFocus
           />
+          <label htmlFor="email">
+            Email <sup>*</sup>
+          </label>
           <input
             id="from_email"
             name="user_email"
@@ -38,6 +40,9 @@ function ContactUs() {
             placeholder="E-mail"
             required
           />
+          <label htmlFor="message">
+            Message <sup>*</sup>
+          </label>
           <textarea
             id="message"
             name="message"
@@ -48,7 +53,7 @@ function ContactUs() {
             required
           ></textarea>
         </div>
-        <button class="btn" type="submit">
+        <button className="btn" type="submit">
           Send
         </button>
       </form>

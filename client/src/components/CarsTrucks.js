@@ -15,7 +15,7 @@ function CarsTrucks() {
         console.log(err);
       });
 
-    console.log("Effect Called ");
+    // console.log("Effect Called ");
   }, []);
 
   return (

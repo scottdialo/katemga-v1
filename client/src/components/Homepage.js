@@ -16,8 +16,7 @@ function Homepage() {
         console.log(err);
       });
 
-    console.log("Effect Called ");
-  }, []);
+   }, []);
 
   //cars listing
   useEffect(() => {
@@ -29,7 +28,7 @@ function Homepage() {
         console.log(err);
       });
 
-    console.log("Effect Called ");
+    // console.log("Effect Called ");
   }, []);
 
   //electronic listing
@@ -42,7 +41,7 @@ function Homepage() {
         console.log(err);
       });
 
-    console.log("Effect Called ");
+    // console.log("Effect Called ");
   }, []);
   return (
     <div className="homepage">

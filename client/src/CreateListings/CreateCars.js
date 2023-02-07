@@ -14,7 +14,6 @@ const CreateCars = () => {
     price: "",
     phone: "",
     description: "",
-    photo1: "",
   });
   const navigate = useNavigate();
 

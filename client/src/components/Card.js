@@ -12,7 +12,7 @@ function Card({ data, pageName }, { isAuth }) {
             <div key={post._id} className="col-12 col-md-4 col-lg-3">
               <div className="card h-100 shadow-sm">
                 <img
-                  src={post?.pictureUrl}
+                  src={post?.pictureUrl[0]}
                   className="bd-placeholder-img card-img-top"
                   alt={post.title}
                 />

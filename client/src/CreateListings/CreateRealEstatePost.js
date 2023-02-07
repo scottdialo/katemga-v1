@@ -1,14 +1,15 @@
 import { useState } from "react";
-import app from "../firebase-config";
+// import app from "../firebase-config";
 
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+// import {
+//   getStorage,
+//   ref,
+//   uploadBytesResumable,
+//   getDownloadURL,
+// } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Axios from "../axiosBaseUrl";
+import axios from "axios";
 
 //mongoDb setup
 const CreateRealEstatePost = () => {
@@ -21,9 +22,6 @@ const CreateRealEstatePost = () => {
     phone: "",
     description: "",
   });
-  // const [file, setFile] = useState(null);
-
-  // testing multiple image upload
 
   const [pictures, setPictures] = useState([]);
 
@@ -52,60 +50,41 @@ const CreateRealEstatePost = () => {
 
   //sending data to DB
   const addRealEstateListing = (e) => {
+    const imgUploadUrl =
+      "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
 
-    const fileName = new Date().getTime() + toString(pictures.name);
-    const storage = getStorage(app);
-    const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, pictures);
-    // console.log(JSON.stringify(fileName));
+    const fileUrls = [];
 
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case "paused":
-            // console.log("Upload is paused");
-            break;
-          case "running":
-            // console.log("Upload is running");
-            break;
-          default:
-        }
-      },
-      (error) => {
-        // Handle unsuccessful uploads
-        console.log(error);
-      },
-      () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const template = {
-            title: realEstateData.title,
-            location: realEstateData.location,
-            price: realEstateData.price,
-            description: realEstateData.description,
-            pictureUrl: downloadURL,
-          };
+    const formData = new FormData();
 
-          console.log(template);
-          Axios.post("/real-estate/create", template).then((response) =>
-            console.log(response.data)
-          );
-          console.log(JSON.stringify(template.pictureUrl));
+    const imageUploads = pictures.map((picture) => {
+      formData.append("file", picture);
+      formData.append("upload_preset", "rc88il7j");
 
-          console.log("image url is at " + downloadURL);
-        });
-      }
-    );
+      return axios.post(imgUploadUrl, formData).then((response) => {
+        const data = response.data;
+        fileUrls.push(data.secure_url); // You should store this URL for future references in your app
+        console.log(data);
+      });
+    });
 
-    navigate("/real-estate");
+    axios.all(imageUploads).then(() => {
+      const template = {
+        title: realEstateData.title,
+        location: realEstateData.location,
+        price: realEstateData.price,
+        description: realEstateData.description,
+        pictureUrl: fileUrls,
+      };
+
+      console.log(template);
+      Axios.post("/real-estate/create", template).then((response) =>
+        console.log(response.data)
+      );
+    });
+
+    // navigate("/real-estate");
   };
 
   return (

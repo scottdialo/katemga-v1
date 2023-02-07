@@ -53,7 +53,7 @@ function ContactUs() {
             required
           ></textarea>
         </div>
-        <button className="btn" type="submit">
+        <button className="contact-btn" type="submit">
           Send
         </button>
       </form>

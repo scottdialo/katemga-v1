@@ -19,6 +19,17 @@ body {
   background-color: rgba(249, 248, 248, 0.8);
 }
 
+/* mobile nav  */
+/* .navbar-collapse {
+  opacity: 0.8;
+  margin-top: 10rem;
+  width: 50%;
+  background: black;
+  position: absolute;
+  z-index: 1;
+  padding-left: 20px;
+} */
+
 .logo,
 .nav-link {
   text-decoration: none;
@@ -80,6 +91,10 @@ p {
   .navbar-nav {
     margin-top: 30px;
   }
+  .nav-link {
+    color: white;
+}
+  
 }
 
 @media screen and (max-width: 450px) {

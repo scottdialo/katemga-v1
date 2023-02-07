@@ -15,20 +15,18 @@ function Homepage() {
       .catch((err) => {
         console.log(err);
       });
-
-   }, []);
+  }, []);
 
   //cars listing
   useEffect(() => {
     Axios.get("/cars")
       .then((res) => {
         setCarPostListings(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // console.log("Effect Called ");
   }, []);
 
   //electronic listing

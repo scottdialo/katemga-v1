@@ -17,9 +17,8 @@ const RealEstateSchema = new mongoose.Schema({
     type: String,
   },
   pictureUrl: {
-    type: String,
+    type: Array,
   },
-  
 });
 
 const RealEstateDB = mongoose.model("RealEstateListing", RealEstateSchema);

@@ -16,6 +16,7 @@ router.route("/create").post((req, res) => {
   const price = req.body.price;
   const phone = req.body.phone;
   const description = req.body.description;
+  const pictureUrl = req.body.pictureUrl;
 
   const electronicData = new ElectronicDB({
     title: title,
@@ -26,6 +27,7 @@ router.route("/create").post((req, res) => {
     price: price,
     phone: phone,
     description: description,
+    pictureUrl: pictureUrl,
   });
 
   electronicData
@@ -34,14 +36,10 @@ router.route("/create").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/:id").get ((req, res) => {
-
-
+router.route("/:id").get((req, res) => {
   ElectronicDB.findById(req.params.id)
-    .then(item => res.json(item))
-    .catch(err => res.status(400).json("Error: " + err));
-
-
-})
+    .then((item) => res.json(item))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 module.exports = router;

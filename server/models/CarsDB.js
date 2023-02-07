@@ -32,8 +32,8 @@ const CarsSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  photo1: {
-    type: String
+  pictureUrl: {
+    type: Array
   }
 });
 

@@ -25,6 +25,9 @@ const ElectronicSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  pictureUrl: {
+    type: Array,
+  },
 });
 
 const ElectronicDB = mongoose.model("Electronic", ElectronicSchema);

@@ -18,7 +18,7 @@ router.route("/create").post((req, res) => {
   const price = req.body.price;
   const phone = req.body.phone;
   const description = req.body.description;
-  const photo1 = req.body.photo1;
+  const pictureUrl = req.body.pictureUrl;
 
 
   const carData = new CarsDB({
@@ -32,7 +32,7 @@ router.route("/create").post((req, res) => {
     price: price,
     phone: phone,
     description: description,
-    photo1:photo1,
+    pictureUrl:pictureUrl,
   });
 
   carData

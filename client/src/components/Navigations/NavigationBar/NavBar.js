@@ -11,7 +11,7 @@ const Navbar = (props) => {
         <div className="logo-wrap">
           <Link to="/" className="logo">
             <h3 className="logo" id="logo">
-              katemga
+            YENGEMA
             </h3>
             <p className="slogan">Buy | Sell | Rent</p>
           </Link>

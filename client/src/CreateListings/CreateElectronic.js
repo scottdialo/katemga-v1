@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Axios from "../axiosBaseUrl";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const CreateElectronic = () => {
+  const navigate = useNavigate();
+
   const [electronicData, setElectronicData] = useState({
     title: "",
     brand: "",
@@ -13,7 +16,19 @@ const CreateElectronic = () => {
     phone: "",
     description: "",
   });
-  const navigate = useNavigate();
+
+  const [pictures, setPictures] = useState([]);
+
+  const handleImageUpload = (event) => {
+    let images = [];
+
+    for (const pictures of event.target.files) {
+      images.push(pictures);
+    }
+
+    setPictures(images);
+    //console.log(images);
+  };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -24,31 +39,52 @@ const CreateElectronic = () => {
     }));
   };
   const addElectronicListing = (e) => {
+    const imgUploadUrl =
+      "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
-    const template = {
-      title: electronicData.title,
-      brand: electronicData.brand,
-      model: electronicData.model,
-      color: electronicData.color,
-      location: electronicData.location,
-      price: electronicData.price,
-      phone: electronicData.phone,
-      description: electronicData.description,
-    };
 
-    Axios.post("/electronic/create", template);
-    console.log(template);
+    const fileUrls = [];
 
+    const formData = new FormData();
+
+    const imageUploads = pictures.map((picture) => {
+      formData.append("file", picture);
+      formData.append("upload_preset", "rc88il7j");
+
+      return axios.post(imgUploadUrl, formData).then((response) => {
+        const data = response.data;
+        fileUrls.push(data.secure_url); // You should store this URL for future references in your app
+        console.log(data);
+      });
+    });
+    axios.all(imageUploads).then(() => {
+      const template = {
+        title: electronicData.title,
+        brand: electronicData.brand,
+        model: electronicData.model,
+        color: electronicData.color,
+        location: electronicData.location,
+        price: electronicData.price,
+        phone: electronicData.phone,
+        description: electronicData.description,
+        pictureUrl: fileUrls,
+      };
+
+      console.log(template);
+
+      Axios.post("/electronic/create", template).then((response) =>
+        console.log(response.data)
+      );
+    });
     navigate("/electronics");
   };
-
   return (
     <div>
       <div className="cpContainer">
         <h1 className="post-header">List a Phone | Computer | Tablet</h1>
 
         <div id="form-group">
-          <label for="title">Listing Title</label>
+          <label htmlFor="title">Listing Title</label>
           <input
             className="form-control"
             type="text"
@@ -57,7 +93,7 @@ const CreateElectronic = () => {
             value={electronicData.title}
             onChange={onChangeHandler}
           />
-          <label for="brand">Brand</label>
+          <label htmlFor="brand">Brand</label>
           <input
             className="form-control"
             type="text"
@@ -65,7 +101,7 @@ const CreateElectronic = () => {
             value={electronicData.brand}
             onChange={onChangeHandler}
           />
-          <label for="brand">Model</label>
+          <label htmlFor="brand">Model</label>
           <input
             className="form-control"
             type="text"
@@ -73,7 +109,7 @@ const CreateElectronic = () => {
             value={electronicData.model}
             onChange={onChangeHandler}
           />
-          <label for="brand">Color</label>
+          <label htmlFor="brand">Color</label>
           <input
             className="form-control"
             type="text"
@@ -81,7 +117,7 @@ const CreateElectronic = () => {
             value={electronicData.color}
             onChange={onChangeHandler}
           />
-          <label for="location">Location</label>
+          <label htmlFor="location">Location</label>
           <input
             className="form-control"
             type="text"
@@ -89,7 +125,7 @@ const CreateElectronic = () => {
             value={electronicData.location}
             onChange={onChangeHandler}
           />
-          <label for="price">Price $</label>
+          <label htmlFor="price">Price $</label>
           <input
             className="form-control"
             type="text"
@@ -97,7 +133,7 @@ const CreateElectronic = () => {
             value={electronicData.price}
             onChange={onChangeHandler}
           />
-          <label for="tel">Phone Number</label>
+          <label htmlFor="tel">Phone Number</label>
           <input
             className="form-control"
             type="number"
@@ -105,8 +141,17 @@ const CreateElectronic = () => {
             value={electronicData.phone}
             onChange={onChangeHandler}
           />
-
-          <label for="">Description</label>
+          <div>
+            <label>Upload Photos</label>
+            <input
+              name="pictureUrl"
+              type="file"
+              multiple
+              onChange={handleImageUpload}
+              accept="image/*"
+            />
+          </div>
+          <label htmlFor="">Description</label>
           <textarea
             className="form-control"
             name="description"

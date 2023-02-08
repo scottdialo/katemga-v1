@@ -1,12 +1,5 @@
 import { useState } from "react";
-// import app from "../firebase-config";
 
-// import {
-//   getStorage,
-//   ref,
-//   uploadBytesResumable,
-//   getDownloadURL,
-// } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Axios from "../axiosBaseUrl";
 import axios from "axios";
@@ -36,8 +29,6 @@ const CreateRealEstatePost = () => {
     //console.log(images);
   };
   // console.log(pictures);
-
-  // testing multiple image upload ends here
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,7 +75,7 @@ const CreateRealEstatePost = () => {
       );
     });
 
-    // navigate("/real-estate");
+    navigate("/real-estate");
   };
 
   return (
@@ -143,13 +134,6 @@ const CreateRealEstatePost = () => {
             onChange={handleChange}
           />
         </div>
-
-        <label for="image">Upload Photos</label>
-        <input
-          type="file"
-          id="file"
-          onChange={(e) => setPictures(e.target.files[0])}
-        />
 
         <div className="inputGp">
           <label>Description </label>

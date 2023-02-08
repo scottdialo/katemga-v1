@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "../axiosBaseUrl";
+import axios from "axios";
 
 const CreateCars = () => {
+  const navigate = useNavigate();
+
   const [carListingData, setCarListingData] = useState({
     title: "",
     brand: "",
@@ -15,7 +18,19 @@ const CreateCars = () => {
     phone: "",
     description: "",
   });
-  const navigate = useNavigate();
+
+  const [pictures, setPictures] = useState([]);
+
+  const handleImageUpload = (event) => {
+    let images = [];
+
+    for (const pictures of event.target.files) {
+      images.push(pictures);
+    }
+
+    setPictures(images);
+    console.log(images);
+  };
 
   const onchangeHandler = (e) => {
     const { name, value } = e.target;
@@ -26,27 +41,52 @@ const CreateCars = () => {
     }));
   };
 
+  //sending data to database
   const addCarListing = (e) => {
+    const imgUploadUrl =
+      "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
-    const template = {
-      title: carListingData.title,
-      brand: carListingData.brand,
-      model: carListingData.model,
-      mileage: carListingData.mileage,
-      year: carListingData.year,
-      color: carListingData.color,
-      location: carListingData.location,
-      price: carListingData.price,
-      phone: carListingData.phone,
-      description: carListingData.description,
-      photo1: carListingData.photo1,
-    };
-    Axios.post("/cars/create", template);
 
-    console.log(template);
+    const fileUrls = [];
+
+    const formData = new FormData();
+
+    const imageUploads = pictures.map((picture) => {
+      formData.append("file", picture);
+      formData.append("upload_preset", "rc88il7j");
+
+      return axios.post(imgUploadUrl, formData).then((response) => {
+        const data = response.data;
+        fileUrls.push(data.secure_url); // You should store this URL for future references in your app
+        console.log(data);
+      });
+    });
+
+    axios.all(imageUploads).then(() => {
+      const template = {
+        title: carListingData.title,
+        brand: carListingData.brand,
+        model: carListingData.model,
+        mileage: carListingData.mileage,
+        year: carListingData.year,
+        color: carListingData.color,
+        location: carListingData.location,
+        price: carListingData.price,
+        phone: carListingData.phone,
+        description: carListingData.description,
+        pictureUrl: fileUrls,
+      };
+      console.log(template);
+
+      Axios.post("/cars/create", template).then((response) =>
+        console.log(response.data)
+      );
+    });
+
     console.log("new listing added to DB");
-    navigate("/cars-trucks");
+    //navigate("/cars-trucks");
   };
+
   return (
     <div className="cpContainer">
       <h1 className="post-header">List a Car or Truck</h1>
@@ -60,7 +100,6 @@ const CreateCars = () => {
           autoFocus
           value={carListingData.title}
           onChange={onchangeHandler}
-          required={true}
         />
         <label for="brand">Brand</label>
         <input
@@ -129,13 +168,14 @@ const CreateCars = () => {
         <label for="image">Upload Photos</label>
         <input
           type="file"
-          name="photo1"
+          name="pictureUrl"
           multiple
-          value={carListingData.photo1}
-          onChange={onchangeHandler}
+          // value={carListingData.photo1}
+          onChange={handleImageUpload}
+          accept="images/*"
         />
 
-        <label for="">Description</label>
+        <label htmlFor="">Description</label>
         <textarea
           name="description"
           type="text"

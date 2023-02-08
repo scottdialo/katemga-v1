@@ -22,7 +22,7 @@ const CardSinglePage = (props) => {
           <Carousel infiniteLoop showArrows>
             {props.pictureUrl.map((pic, index) => {
               return (
-                <div>
+                <div key={pic.id}>
                   <img src={pic} alt="ima" />
                   <p className="legend">Legend {+" " + index}</p>
                 </div>
@@ -37,7 +37,7 @@ const CardSinglePage = (props) => {
           </div>
         </div>
 
-        {/* 
+        {/*
         <div className="col-lg-7 ">
           <img className="item-img" src={props?.pictureUrl} alt={props.title} />
 

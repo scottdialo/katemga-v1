@@ -42,7 +42,8 @@ a {
   text-decoration: none;
 }
 
-.btn,  .contact-btn {
+.btn,
+.contact-btn {
   width: 100%;
   margin: 0.2rem auto;
   /* height: 70px; */
@@ -92,6 +93,12 @@ a {
   white-space: nowrap;
 }
 
+/* single page image css */
+.carousel .slide img {
+  width: 400px !important;
+  height: 400px;
+  border-radius: 5px;
+}
 /* mobile styling */
 
 @media only screen and (max-width: 600px) {

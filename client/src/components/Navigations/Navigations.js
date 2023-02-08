@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navigations.css";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "../Homepage";
 import RealEstate from "../RealEstate";
 import CarsTrucks from "../CarsTrucks";
@@ -21,12 +21,10 @@ import RealEstatePage from "../SinglePages/RealEstateSinglePage";
 import Navbar from "./NavigationBar/NavBar";
 
 function Navigation() {
-
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
   let navigate = useNavigate();
 
   const signUserOut = () => {
-
     // alert("working");
 
     signOut(auth).then(() => {
@@ -36,39 +34,31 @@ function Navigation() {
     });
   };
 
-
   return (
-
-
     <div>
+      <Navbar isAuth={isAuth} signUserOut={signUserOut} />
 
-         <Navbar
-          isAuth={isAuth}
-          signUserOut={signUserOut}
-         />
+      <Routes>
+        <Route path="/" exact element={<Homepage />} />
+        <Route path="/real-estate" element={<RealEstate />}></Route>
+        <Route path="/cars-trucks" element={<CarsTrucks />}></Route>
+        <Route path="/electronics" element={<Electronics />}></Route>
+        <Route path="/contact-us" element={<ContactUs />}></Route>
 
+        <Route
+          path="/createrealestatepost"
+          element={<CreateRealEstatePost />}
+        />
+        <Route path="/createcar" element={<CreateCars />} />
+        <Route path="/create-electronic" element={<CreateElectronic />} />
 
-        <Routes>
-            <Route path="/" exact element={<Homepage />} />
-            <Route path="/real-estate" element={<RealEstate />}></Route>
-            <Route path="/cars-trucks" element={<CarsTrucks />}></Route>
-            <Route path="/electronics" element={<Electronics />}></Route>
-            <Route path="/contact-us" element={<ContactUs />}></Route>
+        <Route path="/real-estate/:postName" element={<RealEstatePage />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/cars-trucks/:postName" element={<CarPage />} />
+        <Route path="/electronics/:postName" element={<ElectronicPage />} />
 
-            <Route
-              path="/createrealestatepost"
-              element={<CreateRealEstatePost />}
-            />
-            <Route path="/createcar" element={<CreateCars />} />
-            <Route path="/create-electronic" element={<CreateElectronic />} />
-
-            <Route path="/real-estate/:postName" element={<RealEstatePage />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/cars-trucks/:postName" element={<CarPage />} />
-            <Route path="/electronics/:postName" element={<ElectronicPage />} />
-
-            <Route path="/login" element={<Login setIsAuth={setIsAuth} />}></Route>
-            <Route path="/mylistings" element={<MyListings />}></Route>
+        <Route path="/login" element={<Login setIsAuth={setIsAuth} />}></Route>
+        <Route path="/mylistings" element={<MyListings />}></Route>
       </Routes>
     </div>
   );

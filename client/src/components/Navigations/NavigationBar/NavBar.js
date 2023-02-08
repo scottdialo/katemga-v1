@@ -11,7 +11,7 @@ const Navbar = (props) => {
         <div className="logo-wrap">
           <Link to="/" className="logo">
             <h3 className="logo" id="logo">
-              katemga
+              YENGEMA
             </h3>
             <p className="slogan">Buy | Sell | Rent</p>
           </Link>
@@ -36,7 +36,7 @@ const Navbar = (props) => {
             {props.isAuth ? (
               <>
                 <NavItem signUserOut={props.signUserOut}>Log Out</NavItem>
-                <NavItem to="/mylistings"> My Listings</NavItem>
+                <NavItem link="/mylistings"> My Listings </NavItem>
               </>
             ) : (
               <NavItem link="/login"> Login </NavItem>
@@ -47,14 +47,10 @@ const Navbar = (props) => {
             <NavItem link="/electronics"> Electronics </NavItem>
             <NavItem link="/contact-us"> Contact </NavItem>
 
-            {/* only show create lisging when user is logged in */}
-            {/* {props.isAuth ? ( */}
-              <Link to="/categories" className="c-listing">
-                Create Listing
-              </Link>
-            {/* ) : ( */}
-              <NavItem link="/login"></NavItem>
-            {/* )} */}
+            <Link to="/categories" className="c-listing">
+              Create Listing
+            </Link>
+            <NavItem link="/login"></NavItem>
           </ul>
         </div>
       </div>

@@ -81,7 +81,7 @@ const CreateRealEstatePost = () => {
   return (
     <div className="createPostPage">
       <div className="cpContainer">
-        <h1 class="post-header">List a House | Land</h1>
+        <h1 className="post-header">List a House | Land</h1>
 
         <div className="inputGp">
           <label>Title</label>
@@ -146,7 +146,7 @@ const CreateRealEstatePost = () => {
           ></textarea>
         </div>
 
-        <button class="btn" type="submit" onClick={addRealEstateListing}>
+        <button className="btn" type="submit" onClick={addRealEstateListing}>
           Publish
         </button>
       </div>

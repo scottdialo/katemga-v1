@@ -33,8 +33,8 @@ const CarsSchema = new mongoose.Schema({
     type: String,
   },
   pictureUrl: {
-    type: Array
-  }
+    type: Array,
+  },
 });
 
 const CarsDB = mongoose.model("Car", CarsSchema);

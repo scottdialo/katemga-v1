@@ -12,7 +12,6 @@ router.route("/create").post((req, res) => {
   const location = req.body.location;
   const price = req.body.price;
   const phone = req.body.phone;
-  // const imgUrl = req.body.imgUrl;
   const pictureUrl = req.body.pictureUrl;
   const description = req.body.description;
 
@@ -21,7 +20,6 @@ router.route("/create").post((req, res) => {
     location: location,
     price: price,
     phone: phone,
-    // imgUrl: imgUrl,
     pictureUrl: pictureUrl,
     description: description,
   });

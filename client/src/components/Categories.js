@@ -3,7 +3,7 @@ import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import LaptopIcon from "@mui/icons-material/Laptop";
 import { Link } from "react-router-dom";
 
-const Categories = () => {
+const Categories = (props) => {
   return (
     <div className="categoryPage">
       <div className="text-center category">

@@ -65,37 +65,3 @@ p {
   margin-left: 20px;
 }
 
-/* media query for responsiveness */
-
-@media only screen and (max-width: 600px) {
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-}
-
-/* testing code */
-
-/* tsting gcode  */
-
-@media only screen and (max-width: 992px) {
-  .nav-container {
-    justify-content: space-between;
-  }
-
-  .c-listing {
-    margin-left: 0;
-    width: fit-content;
-  }
-
-  .navbar-nav {
-    margin-top: 30px;
-  }
-  .nav-link {
-    color: white;
-}
-  
-}
-
-@media screen and (max-width: 450px) {
-}

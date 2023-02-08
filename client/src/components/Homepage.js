@@ -6,7 +6,6 @@ function Homepage() {
   const [carPostListings, setCarPostListings] = useState([]);
   const [electronicListings, setElectronicListings] = useState([]);
 
-
   //display all posts in the homepage
   useEffect(() => {
     Axios.get("/real-estate")

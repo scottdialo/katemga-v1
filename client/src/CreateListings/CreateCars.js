@@ -29,7 +29,7 @@ const CreateCars = () => {
     }
 
     setPictures(images);
-    console.log(images);
+    // console.log(images);
   };
 
   const onchangeHandler = (e) => {
@@ -92,7 +92,7 @@ const CreateCars = () => {
       <h1 className="post-header">List a Car or Truck</h1>
 
       <div id="form-group">
-        <label for="title">Posting Title</label>
+        <label htmlFor="title">Posting Title</label>
         <input
           className="form-control"
           type="text"
@@ -101,7 +101,7 @@ const CreateCars = () => {
           value={carListingData.title}
           onChange={onchangeHandler}
         />
-        <label for="brand">Brand</label>
+        <label htmlFor="brand">Brand</label>
         <input
           className="form-control"
           type="text"
@@ -109,7 +109,7 @@ const CreateCars = () => {
           value={carListingData.brand}
           onChange={onchangeHandler}
         />
-        <label for="model"> Model</label>
+        <label htmlFor="model"> Model</label>
         <input
           className="form-control"
           type="text"
@@ -117,7 +117,7 @@ const CreateCars = () => {
           value={carListingData.model}
           onChange={onchangeHandler}
         />
-        <label for="mileage">Mileage</label>
+        <label htmlFor="mileage">Mileage</label>
         <input
           className="form-control"
           type="number"
@@ -125,7 +125,7 @@ const CreateCars = () => {
           value={carListingData.mileage}
           onChange={onchangeHandler}
         />
-        <label for="year">Year</label>
+        <label htmlFor="year">Year</label>
         <input
           className="form-control"
           type="number"
@@ -133,7 +133,7 @@ const CreateCars = () => {
           value={carListingData.year}
           onChange={onchangeHandler}
         />
-        <label for="color">Color</label>
+        <label htmlFor="color">Color</label>
         <input
           className="form-control"
           type="text"
@@ -141,7 +141,7 @@ const CreateCars = () => {
           value={carListingData.color}
           onChange={onchangeHandler}
         />
-        <label for="location">Location</label>
+        <label htmlFor="location">Location</label>
         <input
           className="form-control"
           type="text"
@@ -149,7 +149,7 @@ const CreateCars = () => {
           value={carListingData.location}
           onChange={onchangeHandler}
         />
-        <label for="price">Price $</label>
+        <label htmlFor="price">Price $</label>
         <input
           className="form-control"
           type="text"
@@ -157,7 +157,7 @@ const CreateCars = () => {
           value={carListingData.price}
           onChange={onchangeHandler}
         />
-        <label for="phone">Phone Number</label>
+        <label htmlFor="phone">Phone Number</label>
         <input
           className="form-control"
           type="number"
@@ -165,12 +165,11 @@ const CreateCars = () => {
           value={carListingData.phone}
           onChange={onchangeHandler}
         />
-        <label for="image">Upload Photos</label>
+        <label htmlFor="image">Upload Photos</label>
         <input
           type="file"
           name="pictureUrl"
           multiple
-          // value={carListingData.photo1}
           onChange={handleImageUpload}
           accept="images/*"
         />

@@ -1,16 +1,22 @@
+import { deleteDoc, doc } from "@firebase/firestore";
 import { Link } from "react-router-dom";
-
-// import { isAuth } from "./RealEstate";
+import { auth, db } from "../firebase-config";
 
 function Card({ data, pageName }, { isAuth }) {
+  //delete post function
+  const deletePost = async (_id) => {
+    const postDoc = doc(db, "cars", _id);
+    await deleteDoc(postDoc);
+  };
+
   return (
-    <div className="container">
-      <div className="row g-4 ">
+    <div className="container ">
+      <div className="row g-4 grid-box">
         {data?.map((post) => {
           //console.log(post);
 
           return (
-            <div key={post._id} className="col-12 col-md-4 col-lg-3">
+            <div key={post._id} className="">
               <div className="card h-100 shadow-sm">
                 <img
                   src={post?.pictureUrl[0]}
@@ -35,6 +41,18 @@ function Card({ data, pageName }, { isAuth }) {
                       </button>
                     </div>
                   </div>
+                </div>
+                <div className="deletePost">
+                  {isAuth && post.author.id === auth.currentUser.uid && (
+                    <button
+                      className="deletePost-btn"
+                      onClick={() => {
+                        deletePost(post._id);
+                      }}
+                    >
+                      &#128465;
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

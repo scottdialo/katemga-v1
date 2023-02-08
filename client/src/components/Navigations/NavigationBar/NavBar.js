@@ -36,7 +36,7 @@ const Navbar = (props) => {
             {props.isAuth ? (
               <>
                 <NavItem signUserOut={props.signUserOut}>Log Out</NavItem>
-                <NavItem to="/mylistings"> My Listings</NavItem>
+                <NavItem link="/mylistings"> My Listings </NavItem>
               </>
             ) : (
               <NavItem link="/login"> Login </NavItem>
@@ -49,11 +49,11 @@ const Navbar = (props) => {
 
             {/* only show create lisging when user is logged in */}
             {/* {props.isAuth ? ( */}
-              <Link to="/categories" className="c-listing">
-                Create Listing
-              </Link>
+            <Link to="/categories" className="c-listing">
+              Create Listing
+            </Link>
             {/* ) : ( */}
-              <NavItem link="/login"></NavItem>
+            <NavItem link="/login"></NavItem>
             {/* )} */}
           </ul>
         </div>

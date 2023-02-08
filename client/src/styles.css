@@ -11,8 +11,17 @@ html {
 
 /* styling for card */
 .card-img-top {
-  height: 200px;
+  height: 250px;
 }
+/* styling for delete icon */
+.deletePost{
+  display: flex;
+  justify-content: right;
+}
+.deletePost-btn{
+  
+}
+
 
 /* single product page styling */
 .mx-auto {
@@ -326,6 +335,13 @@ textarea {
 }
 
 /* styling for listing section on single item page*/
+
+/* grid-container styling */
+.grid-box{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
 
 /* mobile styling */
 

@@ -56,8 +56,7 @@ const CardSinglePage = (props) => {
             <button onClick={onClickHandler} className="btn">
               {showPhone ? (
                 <>
-                  {" "}
-                  <a href={"tel:" + props.phone}> {props.phone} </a>{" "}
+                   <a href={"tel:" + props.phone}> {props.phone} </a>{" "}
                 </>
               ) : (
                 <>

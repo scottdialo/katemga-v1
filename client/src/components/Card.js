@@ -7,7 +7,8 @@ function Card({ data, pageName }, { isAuth }) {
     <div className="container">
       <div className="row g-4 ">
         {data?.map((post) => {
-          console.log(post);
+          //console.log(post);
+
           return (
             <div key={post._id} className="col-12 col-md-4 col-lg-3">
               <div className="card h-100 shadow-sm">

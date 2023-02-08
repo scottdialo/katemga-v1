@@ -14,8 +14,6 @@ function Electronics() {
       .catch((err) => {
         console.log(err);
       });
-
-    // console.log("Effect Called ");
   }, []);
 
   return (

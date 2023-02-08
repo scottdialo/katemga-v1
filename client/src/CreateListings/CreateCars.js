@@ -84,7 +84,7 @@ const CreateCars = () => {
     });
 
     console.log("new listing added to DB");
-    //navigate("/cars-trucks");
+    navigate("/cars-trucks");
   };
 
   return (

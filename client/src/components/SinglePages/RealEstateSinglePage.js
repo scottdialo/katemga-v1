@@ -19,8 +19,6 @@ const RealEstatePage = () => {
       .catch((err) => {
         console.log(err);
       });
-
-   // console.log("Effect Called ");
   }, [postName]);
 
   return (
@@ -55,10 +53,10 @@ const RealEstatePage = () => {
               <span>Description</span> <p>{itemData.description}</p>
             </div>
 
-            <div className="my-5">
+            {/* <div className="my-5">
               <h2>You Might Also Like</h2>
               listing related items
-            </div>
+            </div> */}
           </div>
         </>
       )}

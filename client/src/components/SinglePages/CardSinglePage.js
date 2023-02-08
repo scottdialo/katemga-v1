@@ -7,7 +7,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 
 const CardSinglePage = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const [showPhone, SetShowPhone] = useState(false);
 
@@ -22,9 +22,9 @@ const CardSinglePage = (props) => {
           <Carousel infiniteLoop showArrows>
             {props.pictureUrl.map((pic, index) => {
               return (
-                <div key={pic.id}>
+                <div key={index}>
                   <img src={pic} alt="ima" />
-                  <p className="legend">Legend {+" " + index}</p>
+                  <p className="legend"> {+" " + index}</p>
                 </div>
               );
             })}
@@ -36,17 +36,6 @@ const CardSinglePage = (props) => {
             <p>{props.location}</p>
           </div>
         </div>
-
-        {/*
-        <div className="col-lg-7 ">
-          <img className="item-img" src={props?.pictureUrl} alt={props.title} />
-
-          <h2 className="my-3"> {props.title}</h2>
-
-          <div>
-            <p>{props.location}</p>
-          </div>
-        </div> */}
 
         <div className="col-lg-3 shadow-sm car-details-box">
           <div>
@@ -65,7 +54,6 @@ const CardSinglePage = (props) => {
             </div>
 
             <button onClick={onClickHandler} className="btn">
-              {" "}
               {showPhone ? (
                 <>
                   {" "}

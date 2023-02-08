@@ -44,17 +44,17 @@ const Navbar = (props) => {
 
             <NavItem link="/real-estate"> RealEstate </NavItem>
             <NavItem link="/cars-trucks"> Cars/Trucks</NavItem>
-            <NavItem link="/electronics"> Electonics </NavItem>
+            <NavItem link="/electronics"> Electronics </NavItem>
             <NavItem link="/contact-us"> Contact </NavItem>
 
             {/* only show create lisging when user is logged in */}
-            {props.isAuth ? (
+            {/* {props.isAuth ? ( */}
               <Link to="/categories" className="c-listing">
                 Create Listing
               </Link>
-            ) : (
+            {/* ) : ( */}
               <NavItem link="/login"></NavItem>
-            )}
+            {/* )} */}
           </ul>
         </div>
       </div>

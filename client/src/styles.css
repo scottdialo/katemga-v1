@@ -7,6 +7,8 @@
 body,
 html {
   font-family: "Epilogue", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* styling for card */
@@ -375,7 +377,7 @@ textarea {
   }
 
   .navbar-nav {
-    /* margin-top: 30px; */
+    /* margin-left: -200px; */
   }
   .nav-link {
     color: white;

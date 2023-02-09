@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import NavItem from "./NavItem";
 
 const Navbar = (props) => {
+ 
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light rounded"
@@ -17,7 +18,8 @@ const Navbar = (props) => {
           </Link>
         </div>
         <button
-          className="navbar-toggler collapsed"
+          className=" navbar-toggler collapsed"
+          id="burger-btn"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarsExample08"

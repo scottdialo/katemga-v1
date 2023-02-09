@@ -19,7 +19,7 @@ const CardSinglePage = (props) => {
     <div className="container-fluid">
       <div className="row justify-content-center">
         <div className="col-lg-7 ">
-          <Carousel infiniteLoop showArrows>
+          <Carousel infiniteLoop showArrows swipeable  >
             {props.pictureUrl.map((pic, index) => {
               return (
                 <div key={index}>
@@ -56,7 +56,7 @@ const CardSinglePage = (props) => {
             <button onClick={onClickHandler} className="btn">
               {showPhone ? (
                 <>
-                   <a href={"tel:" + props.phone}> {props.phone} </a>{" "}
+                  <a href={"tel:" + props.phone}> {props.phone} </a>
                 </>
               ) : (
                 <>

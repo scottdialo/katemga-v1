@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NavItem = (props) => {
+const NavigationItem = (props) => {
 
     return (
         <>
@@ -11,4 +11,4 @@ const NavItem = (props) => {
     )
 }
 
-export default NavItem;
+export default NavigationItem;

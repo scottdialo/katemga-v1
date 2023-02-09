@@ -37,6 +37,7 @@ const RealEstatePage = () => {
       ) : (
         <>
           <CardSinglePage
+             id={itemData._id}
             pictureUrl={itemData.pictureUrl}
             title={itemData.title}
             location={itemData.location}

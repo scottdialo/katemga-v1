@@ -36,6 +36,7 @@ const ElectronicPage = () => {
       ) : (
         <>
           <CardSinglePage
+             id={itemData._id}
             title={itemData.title}
             location={itemData.location}
             price={itemData.price}

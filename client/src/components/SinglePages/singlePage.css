@@ -53,11 +53,16 @@ a {
   align-items: center;
   font-weight: 700;
 }
+.show-phone-btn {
+  margin: 1rem auto;
+}
 
 .safety-tips-container {
   box-sizing: border-box;
   padding: 8px 0 8px 8px;
-  background-color: #f2f6fb;
+  background-color: green;
+  border-radius: 5px;
+  color: white;
 }
 
 .safety-tips-title {
@@ -69,7 +74,7 @@ a {
 .safety-tips {
   font-size: 12px;
   margin-bottom: 6px;
-  color: #31303a;
+  color: #fff;
 }
 
 .listing-section {
@@ -91,6 +96,10 @@ a {
   font-size: 16px;
   line-height: 24px;
   grid-row-gap: 16px;
+}
+
+.listing-details-table p {
+  padding-left: 10px;
 }
 
 .listing-details-table span {

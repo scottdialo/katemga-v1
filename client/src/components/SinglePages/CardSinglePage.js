@@ -53,7 +53,7 @@ const CardSinglePage = (props) => {
               </div>
             </div>
 
-            <button onClick={onClickHandler} className="btn">
+            <button onClick={onClickHandler} className="btn show-phone-btn">
               {showPhone ? (
                 <>
                   <a href={"tel:" + props.phone}> {props.phone} </a>

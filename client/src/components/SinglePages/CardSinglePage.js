@@ -16,28 +16,28 @@ const CardSinglePage = (props) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-0 ">
       <div className="row justify-content-center">
         <div className="col-lg-7 ">
-          <Carousel infiniteLoop showArrows swipeable>
-            {props.pictureUrl.map((pic, index) => {
+          <Carousel infiniteLoop showArrows labels showThumbs="false">
+            {props.pictureUrl.map((pic) => {
               return (
-                <div key={index}>
-                  <img src={pic} alt="ima" />
+                <div key={props.id}>
+                  <img className="item-img" src={pic} alt={props.title} />
+                  {/* <p className="legend"> {+" " + ind}</p> */}
                 </div>
               );
             })}
           </Carousel>
 
-          <h2 className="my-3"> {props.title}</h2>
-
-          <div>
+          <div className="item-title-container">
+            <h2 className="my-3"> {props.title}</h2>
             <p>{props.location}</p>
           </div>
         </div>
 
-        <div className="col-lg-3 shadow-sm car-details-box">
-          <div>
+        <div className="col-lg-3">
+          <div className="item-details-container shadow-sm">
             <p className="mt-2-5">List Price</p>
             <div className="heading-2 mt-1">
               ${parseInt(props.price).toLocaleString()}

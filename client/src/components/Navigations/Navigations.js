@@ -18,7 +18,7 @@ import Categories from "../Categories";
 import CarPage from "../SinglePages/CarSinglePage";
 import ElectronicPage from "../SinglePages/ElectronicSinglePage";
 import RealEstatePage from "../SinglePages/RealEstateSinglePage";
-import Navbar from "./NavigationBar/NavBar";
+import NavigationBar from "./NavigationBar/NavigationBar";
 
 function Navigation() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -36,7 +36,7 @@ function Navigation() {
 
   return (
     <div>
-      <Navbar isAuth={isAuth} signUserOut={signUserOut} />
+      <NavigationBar isAuth={isAuth} signUserOut={signUserOut} />
 
       <Routes>
         <Route path="/" exact element={<Homepage />} />

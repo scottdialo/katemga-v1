@@ -1,0 +1,44 @@
+.NavigationItems {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-nav {
+
+    padding-left: 10px;
+    
+   }
+   .nav-item .nav-link {
+     color: black;
+   }
+
+
+
+@media (min-width: 990px) {
+    .NavigationItems {
+        flex-flow: row;
+    }
+
+    .navbar-nav{
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .nav-item {
+        margin: 0 10px;
+    }
+
+  
+}
+
+@media (max-width: 990px) {
+
+    .c-listing{
+        margin: 1rem 0;
+    }
+}

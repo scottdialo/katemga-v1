@@ -36,6 +36,7 @@ const CarPage = () => {
       ) : (
         <>
           <CardSinglePage
+           id={itemData._id}
             title={itemData.title}
             pictureUrl={itemData.pictureUrl}
             brand={itemData.brand}

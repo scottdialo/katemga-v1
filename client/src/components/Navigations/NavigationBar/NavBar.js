@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import NavItem from "./NavItem";
 
 const Navbar = (props) => {
- 
   return (
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light rounded"

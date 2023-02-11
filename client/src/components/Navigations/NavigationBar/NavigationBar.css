@@ -1,0 +1,11 @@
+
+
+.nav-container{
+    justify-content: space-between;
+}
+
+@media (max-width: 990px) {
+    .desktop-view-only {
+        display: none;
+    }
+}

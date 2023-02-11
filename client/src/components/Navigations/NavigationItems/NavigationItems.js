@@ -12,17 +12,17 @@ const NavigationItems = (props) => {
     <ul className="navbar-nav">
       {props.isAuth ? (
         <>
-          <NavigationItem signUserOut={props.signUserOut}>Log Out</NavigationItem>
+          <NavigationItem clicked={props.signUserOut}>Log Out</NavigationItem>
           <NavigationItem link="/mylistings"> My Listings </NavigationItem>
         </>
       ) : (
-        <NavigationItem link="/login"> Login </NavigationItem>
+        <NavigationItem clicked={props.close} link="/login"> Login </NavigationItem>
       )}
 
-      <NavigationItem link="/real-estate"> RealEstate </NavigationItem>
-      <NavigationItem link="/cars-trucks"> Cars/Trucks</NavigationItem>
-      <NavigationItem link="/electronics"> Electronics </NavigationItem>
-      <NavigationItem link="/contact-us"> Contact </NavigationItem>
+      <NavigationItem clicked={props.close} link="/real-estate"> RealEstate </NavigationItem>
+      <NavigationItem clicked={props.close} link="/cars-trucks"> Cars/Trucks</NavigationItem>
+      <NavigationItem clicked={props.close} link="/electronics"> Electronics </NavigationItem>
+      <NavigationItem clicked={props.close} link="/contact-us"> Contact </NavigationItem>
 
       <Link to="/categories" className="c-listing">
         Create Listing

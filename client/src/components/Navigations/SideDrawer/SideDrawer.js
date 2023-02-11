@@ -29,7 +29,9 @@ const sideDrawer = ( props ) => {
         </div>
               
                 <nav>
-                    <NavigationItems />
+                    <NavigationItems  
+                      close={props.closed}
+                    />
                 </nav>
             </div>
         </>

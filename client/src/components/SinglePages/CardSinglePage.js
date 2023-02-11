@@ -20,7 +20,7 @@ const CardSinglePage = (props) => {
       <div className="row justify-content-center">
         <div className="col-lg-7 ">
           
-          <Carousel infiniteLoop showArrows>
+          <Carousel infiniteLoop showArrows labels showThumbs="false">
             {props.pictureUrl.map((pic) => {
               return (
                 <div key={props.id} >

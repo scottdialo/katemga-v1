@@ -61,10 +61,7 @@ const CarPage = () => {
               <span>Description</span> <p>{itemData.description}</p>
             </div>
 
-            <div className="my-5">
-              <h2>You Might Also Like</h2>
-              listing related items
-            </div>
+           
           </div>
         </>
       )}

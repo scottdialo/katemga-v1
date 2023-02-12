@@ -1,4 +1,6 @@
 import React from "react";
+import facebook from "../assets/images/facebook.png";
+import instagram from "../assets/images/instagram.png";
 
 function Footer() {
   const day = new Date();
@@ -14,8 +16,8 @@ function Footer() {
         <p>Made with ❤️ in California</p>
       </div>
       <div className="footer-right">
-        <img src="./images/instagram.png" alt="instagram-icon" />
-        <img src="./images/facebook.png" alt="facebook-icon" />
+        <img src={facebook} alt="facebook-icon" />
+        <img src={instagram} alt="instagram-icon" />
       </div>
     </footer>
   );

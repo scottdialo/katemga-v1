@@ -20,7 +20,7 @@
 } */
 
 .carousel.carousel-slider {
-  height: 400px;
+  /* height: 400px; */
 }
 
 .item-details-container {
@@ -148,10 +148,6 @@
 
   .item-details-container {
     padding: 6%;
-  }
-
-  .carousel.carousel-slider {
-    height: 300px;
   }
 }
 

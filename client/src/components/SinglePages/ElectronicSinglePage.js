@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardSinglePage from "./CardSinglePage";
 import Axios from "../../axiosBaseUrl";
-import spinner from "../UI/Spinner/Spinner";
+import Spinner from "../UI/Spinner/Spinner";
 const ElectronicPage = () => {
   const { postName } = useParams();
 
@@ -31,7 +31,7 @@ const ElectronicPage = () => {
             alignItems: "center",
           }}
         >
-         <spinner />
+         <Spinner />
         </div>
       ) : (
         <>

@@ -73,10 +73,9 @@ const CreateElectronic = () => {
       console.log(template);
 
       Axios.post("/electronic/create", template).then((response) =>
-        console.log(response.data)
+        navigate("/electronics")
       );
     });
-    navigate("/electronics");
   };
   return (
     <div>

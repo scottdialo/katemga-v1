@@ -345,8 +345,6 @@ textarea {
 
 /* media query for responsiveness */
 
-
-
 @media only screen and (max-width: 600px) {
   .cpContainer {
     width: 100%;
@@ -378,27 +376,24 @@ textarea {
     width: fit-content;
   }
 
-  .navbar-nav {
-    /* margin-left: -200px; */
-  }
   .nav-link {
     color: white;
+  }
+  footer {
+    flex-direction: column-reverse;
+  }
+  .thumbs-wrapper {
+    display: none;
+  }
+  .dot {
+    background-color: green !important;
+    width: 15px !important;
+    height: 15px !important;
   }
 }
 
 @media screen and (max-width: 450px) {
-  /* .container .grid-box {
-    grid-template-columns: 1fr;
-  } */
-  /* .card .card-img-top {
-    height: 200px;
-    width: 200px;
-    margin: 0 auto;
-  } */
   .card-body .card-text {
     font-size: 1rem;
   }
-  /* .carousel .slide img {
-    height: 300px !important;
-  } */
 }

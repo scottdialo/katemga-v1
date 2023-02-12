@@ -58,7 +58,6 @@ const CreateCars = () => {
       return axios.post(imgUploadUrl, formData).then((response) => {
         const data = response.data;
         fileUrls.push(data.secure_url); // You should store this URL for future references in your app
-        console.log(data);
       });
     });
 
@@ -76,15 +75,13 @@ const CreateCars = () => {
         description: carListingData.description,
         pictureUrl: fileUrls,
       };
-      console.log(template);
 
       Axios.post("/cars/create", template).then((response) =>
-        console.log(response.data)
+        navigate("/cars-trucks")
       );
     });
 
     console.log("new listing added to DB");
-    navigate("/cars-trucks");
   };
 
   return (

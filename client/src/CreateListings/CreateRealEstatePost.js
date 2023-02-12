@@ -71,11 +71,9 @@ const CreateRealEstatePost = () => {
 
       console.log(template);
       Axios.post("/real-estate/create", template).then((response) =>
-        console.log(response.data)
+        navigate("/real-estate")
       );
     });
-
-    navigate("/real-estate");
   };
 
   return (

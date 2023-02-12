@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardSinglePage from "./CardSinglePage";
 import Axios from "../../axiosBaseUrl";
+import Spinner from "../../components/UI/Spinner/Spinner"
 
 const CarPage = () => {
   const { postName } = useParams();
@@ -31,7 +32,7 @@ const CarPage = () => {
             alignItems: "center",
           }}
         >
-          Loading...
+          <Spinner />
         </div>
       ) : (
         <>

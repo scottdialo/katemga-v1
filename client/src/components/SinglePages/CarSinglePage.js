@@ -14,6 +14,7 @@ const CarPage = () => {
     Axios.get("/cars/" + postName)
       .then((res) => {
         setItemData(res.data);
+        window.scrollTo(0, 0);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,18 +24,7 @@ const CarPage = () => {
 
   return (
     <>
-      {loading ? (
-        <div
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Spinner />
-        </div>
-      ) : (
+      {loading ? <Spinner title="Loading"/> : (
         <>
           <CardSinglePage
            id={itemData._id}

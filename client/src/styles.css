@@ -278,8 +278,9 @@ textarea {
 
 .homepage {
   width: 100%;
-  padding: 7%;
+  padding: 3% 7% 7% 7%;
   text-align: center;
+  margin-top: 0;
 }
 
 .homepage .post {

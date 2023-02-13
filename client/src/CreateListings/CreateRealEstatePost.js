@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "../axiosBaseUrl";
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader"
+
 
 //mongoDb setup
 const CreateRealEstatePost = () => {
@@ -17,6 +19,7 @@ const CreateRealEstatePost = () => {
   });
 
   const [pictures, setPictures] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (event) => {
     let images = [];
@@ -41,6 +44,7 @@ const CreateRealEstatePost = () => {
 
   //sending data to DB
   const addRealEstateListing = (e) => {
+    setLoading(true)
     const imgUploadUrl =
       "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
@@ -65,19 +69,24 @@ const CreateRealEstatePost = () => {
         title: realEstateData.title,
         location: realEstateData.location,
         price: realEstateData.price,
+        phone: realEstateData.phone,
         description: realEstateData.description,
         pictureUrl: fileUrls,
       };
 
       console.log(template);
-      Axios.post("/real-estate/create", template).then((response) =>
+      Axios.post("/real-estate/create", template).then((response) => {
+         setLoading(false);
         navigate("/real-estate")
-      );
+
+    });
     });
   };
 
   return (
+
     <div className="createPostPage">
+    
       <div className="cpContainer">
         <h1 className="post-header">List a House | Land</h1>
 
@@ -144,11 +153,12 @@ const CreateRealEstatePost = () => {
           ></textarea>
         </div>
 
-        <button className="btn" type="submit" onClick={addRealEstateListing}>
-          Publish
+        <button className="btn btn-lg" type="submit" onClick={addRealEstateListing}>
+         { loading ?  <BeatLoader color="white" /> : "Publish" }
         </button>
       </div>
     </div>
+  
   );
 };
 

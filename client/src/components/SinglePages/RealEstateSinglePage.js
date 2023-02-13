@@ -3,6 +3,7 @@ import Axios from "../../axiosBaseUrl";
 import { useParams } from "react-router-dom";
 import CardSinglePage from "./CardSinglePage";
 import { useState } from "react";
+import Spinner from "../UI/Spinner/Spinner";
 
 const RealEstatePage = () => {
   const { postName } = useParams();
@@ -14,6 +15,7 @@ const RealEstatePage = () => {
     Axios.get("/real-estate/" + postName)
       .then((res) => {
         setItemData(res.data);
+        window.scrollTo(0, 0);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,18 +25,7 @@ const RealEstatePage = () => {
 
   return (
     <>
-      {loading ? (
-        <div
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Loading...
-        </div>
-      ) : (
+      {loading ? <Spinner title="Loading"/> : (
         <>
           <CardSinglePage
             id={itemData._id}

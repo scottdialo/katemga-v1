@@ -2,6 +2,7 @@ import { useState } from "react";
 import Axios from "../axiosBaseUrl";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader"
 
 const CreateElectronic = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const CreateElectronic = () => {
   });
 
   const [pictures, setPictures] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (event) => {
     let images = [];
@@ -39,6 +41,7 @@ const CreateElectronic = () => {
     }));
   };
   const addElectronicListing = (e) => {
+    setLoading(true);
     const imgUploadUrl =
       "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
@@ -54,7 +57,7 @@ const CreateElectronic = () => {
       return axios.post(imgUploadUrl, formData).then((response) => {
         const data = response.data;
         fileUrls.push(data.secure_url); // You should store this URL for future references in your app
-        console.log(data);
+  
       });
     });
     axios.all(imageUploads).then(() => {
@@ -70,11 +73,12 @@ const CreateElectronic = () => {
         pictureUrl: fileUrls,
       };
 
-      console.log(template);
+    
 
-      Axios.post("/electronic/create", template).then((response) =>
+      Axios.post("/electronic/create", template).then((response) => {
+        setLoading(false);
         navigate("/electronics")
-      );
+    });
     });
   };
   return (
@@ -162,11 +166,11 @@ const CreateElectronic = () => {
           ></textarea>
         </div>
         <button
-          className="btn btn-primary post-btn"
+          className="btn btn-primary post-btn btn-lg"
           type="submit"
           onClick={addElectronicListing}
         >
-          Publish
+          { loading ?  <BeatLoader color="white" /> : "Publish" }
         </button>
       </div>
     </div>

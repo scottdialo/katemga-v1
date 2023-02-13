@@ -19,9 +19,7 @@
   background-color: grey;
 } */
 
-.carousel.carousel-slider {
-  /* height: 400px; */
-}
+
 
 .item-details-container {
   padding: 20px;
@@ -124,16 +122,19 @@
 }
 
 /* single page image css */
-/* .carousel .slide img {
-  width: 400px !important;
-  height: 400px;
-  border-radius: 5px;
-} */
+.carousel .slide img {
+  height: 300px;
+  object-fit: contain;
+}
 /* mobile styling */
 
 @media screen and (min-width: 769px) {
   .container-fluid {
     padding: 4% 9% !important;
+  }
+  .carousel .slide img {
+    height: 400px;
+    object-fit: contain;
   }
 }
 

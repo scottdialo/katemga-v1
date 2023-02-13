@@ -13,14 +13,12 @@ html {
 
 /* styling for card */
 .card-img-top {
-  height: 250px;
+  height: 300px;
 }
 /* styling for delete icon */
 .deletePost {
   display: flex;
   justify-content: right;
-}
-.deletePost-btn {
 }
 
 /* single product page styling */

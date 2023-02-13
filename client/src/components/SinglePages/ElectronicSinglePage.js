@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import CardSinglePage from "./CardSinglePage";
 import Axios from "../../axiosBaseUrl";
-
+import Spinner from "../UI/Spinner/Spinner";
 const ElectronicPage = () => {
   const { postName } = useParams();
 
@@ -13,6 +13,7 @@ const ElectronicPage = () => {
     Axios.get("/electronic/" + postName)
       .then((res) => {
         setItemData(res.data);
+        window.scrollTo(0, 0);
         setLoading(false);
       })
       .catch((err) => {
@@ -22,18 +23,7 @@ const ElectronicPage = () => {
 
   return (
     <>
-      {loading ? (
-        <div
-          style={{
-            height: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          Loading...
-        </div>
-      ) : (
+      {loading ? <Spinner title="Loading"/> : (
         <>
           <CardSinglePage
              id={itemData._id}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "../axiosBaseUrl";
 import axios from "axios";
+import BeatLoader from "react-spinners/BeatLoader";
 
 const CreateCars = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const CreateCars = () => {
   });
 
   const [pictures, setPictures] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (event) => {
     let images = [];
@@ -43,6 +45,7 @@ const CreateCars = () => {
 
   //sending data to database
   const addCarListing = (e) => {
+    setLoading(true);
     const imgUploadUrl =
       "https://api.cloudinary.com/v1_1/dt6gdt87q/image/upload";
     e.preventDefault();
@@ -76,9 +79,10 @@ const CreateCars = () => {
         pictureUrl: fileUrls,
       };
 
-      Axios.post("/cars/create", template).then((response) =>
-        navigate("/cars-trucks")
-      );
+      Axios.post("/cars/create", template).then((response) => {
+        setLoading(false);
+        navigate("/cars-trucks");
+      });
     });
 
     console.log("new listing added to DB");
@@ -180,11 +184,11 @@ const CreateCars = () => {
         ></textarea>
       </div>
       <button
-        className="btn btn-primary post-btn"
+        className="btn btn-primary post-btn btn-lg"
         type="submit"
         onClick={addCarListing}
       >
-        Publish
+        {loading ? <BeatLoader color="white" /> : "Publish"}
       </button>
     </div>
   );
